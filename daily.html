@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily updates · Chuma Gebashe</title>
+<meta name="description" content="Daily, weekly and monthly progress updates from Chuma Gebashe, Retention &amp; Renewals Intern at Sage.">
+<meta property="og:title" content="Chuma Gebashe · Progress Updates">
+<meta property="og:description" content="Daily, weekly and monthly progress updates from Chuma Gebashe, Retention &amp; Renewals Intern at Sage.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.chuma.live/chuma.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="chuma.jpg">
+<link rel="stylesheet" href="assets/style.css">
+<script src="data/progress.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="daily">
+<header id="site-header"></header>
+<main><div class="wrap">
+<nav class="tabs" aria-label="View">
+  <a href="#" data-tab="daily">Daily</a><a href="#" data-tab="weekly">Weekly</a><a href="#" data-tab="monthly">Monthly</a>
+</nav>
+<div class="period-head">
+  <div><p class="eyebrow" id="crumb"></p><h1 id="title"></h1><p class="lede" id="intro"></p></div>
+  <div class="pager" id="pager"></div>
+</div>
+<div class="panel summary" id="summary"></div>
+<div id="list"></div>
+<script>
+document.querySelectorAll('.tabs a').forEach(function(a){var t=a.dataset.tab;a.href=location.protocol==='file:'?t+'.html':'/'+t;if(t==='daily')a.classList.add('active');});
+</script>
+</div></main>
+<footer id="site-footer"></footer>
+</body>
+</html>

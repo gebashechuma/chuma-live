@@ -1,0 +1,22 @@
+{
+  "name": "Chuma Gebashe · Progress Updates",
+  "short_name": "Chuma",
+  "description": "Daily, weekly and monthly progress updates from Chuma Gebashe, Retention & Renewals Intern at Sage.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#050605",
+  "theme_color": "#050605",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Today", "url": "/daily", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "This week", "url": "/weekly", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "This month", "url": "/monthly", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

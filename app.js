@@ -254,6 +254,46 @@
     targets.forEach(function (t) { io.observe(t); });
   }
 
+  /* ---------- app install + offline ---------- */
+  function setupApp() {
+    if ("serviceWorker" in navigator && !LOCAL) {
+      navigator.serviceWorker.register("/sw.js").catch(function () {});
+    }
+    var standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+    if (standalone) { document.documentElement.classList.add("is-app"); return; }
+
+    var host = document.querySelector(".header-inner");
+    if (!host) return;
+    var btn = document.createElement("button");
+    btn.className = "install-btn"; btn.type = "button"; btn.hidden = true;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Install app';
+    host.appendChild(btn);
+
+    var deferred = null;
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault(); deferred = e; btn.hidden = false;
+    });
+    var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (ios) btn.hidden = false;
+
+    btn.addEventListener("click", function () {
+      if (deferred) {
+        deferred.prompt();
+        deferred.userChoice.then(function () { deferred = null; btn.hidden = true; });
+      } else if (ios) {
+        showTip("To install: tap the Share button, then “Add to Home Screen”.");
+      }
+    });
+    window.addEventListener("appinstalled", function () { btn.hidden = true; });
+  }
+  function showTip(text) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = text;
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add("show"); });
+    setTimeout(function () { t.classList.remove("show"); setTimeout(function () { t.remove(); }, 400); }, 5000);
+  }
+
   /* ---------- boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
@@ -269,5 +309,6 @@
       return '<li><span class="pill s-' + s + '">' + STATUS[s].label + "</span>" + STATUS[s].desc + "</li>";
     }).join("");
     setupReveal();
+    setupApp();
   });
 })();

@@ -187,3 +187,15 @@ section > h2{font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:20px}
   .recent li .muted{grid-column:2}
   .focus li{padding-left:66px}
 }
+
+/* ---------- app mode ---------- */
+.install-btn{order:3;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;font:inherit;font-size:14px;font-weight:700;color:var(--green);background:transparent;border:1.5px solid var(--green);border-radius:999px;padding:7px 14px;margin-left:6px}
+.install-btn[hidden]{display:none}
+.install-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.install-btn:hover{background:rgba(0,220,60,.12)}
+.toast{position:fixed;left:16px;right:16px;margin:0 auto;width:fit-content;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateY(20px);opacity:0;z-index:50;max-width:calc(100% - 32px);padding:14px 18px;border-radius:16px;font-size:15px;background:rgba(20,24,20,.85);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid var(--edge);box-shadow:0 10px 40px rgba(0,0,0,.5);transition:all .35s var(--ease)}
+.toast.show{opacity:1;transform:none}
+#site-header{top:calc(12px + env(safe-area-inset-top))}
+.is-app body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.is-app #site-footer{padding-bottom:env(safe-area-inset-bottom)}
+@media (max-width:700px){ .brand{flex:1} .install-btn{order:2;padding:6px 11px;font-size:13px;margin-left:0} .nav{order:4} }
